@@ -1,0 +1,37 @@
+# dependencies
+node_modules
+.pnpm-store
+D32DF4D8088690EA
+40172609065063695
+# next.js
+.next
+out
+
+# build
+dist
+build
+.turbo
+
+# env
+.env
+.env.local
+.env.*.local
+
+# supabase
+supabase/.branches
+supabase/.temp
+
+# debug
+npm-debug.log*
+pnpm-debug.log*
+
+# os
+.DS_Store
+Thumbs.db
+
+# ide
+.idea
+.vscode
+
+# test
+coverage

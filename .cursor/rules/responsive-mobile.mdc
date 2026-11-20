@@ -1,0 +1,32 @@
+---
+description: Mobile-first responsive UI and future Capacitor webview requirements
+alwaysApply: true
+---
+
+# Responsive & mobile (Capacitor-ready)
+
+HealthBridge will ship as a **Capacitor webview app**. Every UI change must work on phone, tablet, and desktop without the user asking again.
+
+## Rules (always)
+
+1. **Mobile-first**: Base styles for 320px+; enhance with `sm:` `md:` `lg:` breakpoints.
+2. **No horizontal page scroll**: Use `min-w-0`, `overflow-x-auto` only inside tables/cards, `max-w-full`.
+3. **Touch targets**: Buttons/links ≥ 44px height (`min-h-11`, adequate padding).
+4. **Forms**: Full-width inputs on mobile; `w-full max-w-* mx-auto px-4` on auth/admin forms.
+5. **Tables**: Always wrap in `overflow-x-auto`; never force page width with `min-w-[720px]` without scroll container.
+6. **Admin nav**: Drawer overlay on `< lg`; persistent sidebar on `lg+`.
+7. **Typography**: Scale down headings on mobile (`text-2xl sm:text-3xl lg:text-4xl`).
+8. **Charts**: Responsive height (`h-48 sm:h-64`), `ResponsiveContainer` width 100%.
+9. **Safe areas**: Use `safe-top` / `safe-bottom` / `px-safe` for notch/home indicator (Capacitor).
+10. **Images**: `sizes` prop on `next/image`; `object-cover` with sensible `aspect-*`.
+
+## Test mentally at
+
+- 375×667 (iPhone SE)
+- 390×844 (iPhone 14)
+- 768×1024 (iPad)
+- 1280+ (desktop)
+
+## Reference
+
+See `docs/MEMORY.md` (project memory) and `docs/MOBILE_RESPONSIVE.md` for full checklist and Capacitor notes.

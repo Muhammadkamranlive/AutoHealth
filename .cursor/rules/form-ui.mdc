@@ -1,0 +1,34 @@
+---
+description: Unified form UI — Input, Select, Textarea, FormCard across all forms
+alwaysApply: true
+---
+
+# Form UI (synced)
+
+Never use raw HTML form controls with custom one-off Tailwind in this project.
+
+## Required components
+
+- `Input`, `Select`, `Textarea` from `@/components/ui`
+- `FormCard`, `FormGrid`, `FormActions` for layout
+- `Button` for actions
+- `LoadingOverlay` during submit
+
+## Styles
+
+Shared tokens in `src/components/ui/lib/form-styles.ts`:
+- `formControlClass` — inputs/selects/textareas
+- `formCardClass` — section containers
+- `min-h-11`, `rounded-xl`, medical blue focus ring
+
+## New forms checklist
+
+1. Wrap sections in `FormCard`
+2. Use `FormGrid` for side-by-side fields
+3. Use `FormActions` for submit/cancel
+4. Match login/signup/admin form spacing (`space-y-5` / `space-y-6`)
+5. Mobile: full-width controls, `text-base` on inputs (iOS)
+
+## Reference
+
+`docs/MEMORY.md` — Form UI section

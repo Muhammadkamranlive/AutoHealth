@@ -1,0 +1,31 @@
+---
+description: Menus, roles, and per-menu CRUD permissions — required for all admin features
+alwaysApply: true
+---
+
+# Menus, roles & permissions
+
+All future admin features MUST use the existing menu + permission system. Do not build parallel RBAC.
+
+## When adding a new admin page or feature
+
+1. Add row to `platform_menus` (migration) with `permission` (e.g. `patients:read`)
+2. Grant via role/user menu editors with `allowed_actions[]`
+3. Page: `requirePermission(supabase, 'resource:read')` — redirect `/admin?error=no_permission` on deny
+4. Server actions: `requirePermission` for create/update/delete/approve
+5. UI: `useAdminWorkspace().can('resource:action')` to hide/disable buttons
+6. Menu appears in sidebar only if assigned to user/role
+
+## Permission resolution
+
+- `resolveUserPermissions()` / `buildEffectivePermissionSet()` in `src/lib/menus/permissions.ts`
+- Admin role = full access
+- Others = union of grants from `role_menu_grants` or `user_menu_grants` (custom mode)
+
+## Denied message
+
+Use `PERMISSION_DENIED_MESSAGE` from `src/lib/auth/errors.ts` — never invent new copy.
+
+## Reference
+
+`docs/MEMORY.md` — Menus, roles & permissions section
